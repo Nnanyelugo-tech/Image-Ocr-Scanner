@@ -24,7 +24,10 @@ export function ScanUI({
       </section>
 
       <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* LEFT SIDE — Upload + Buttons */}
         <div className="col-span-1">
+
+          {/* Image Preview Box or UploadBox */}
           <div
             className="w-full min-h-[400px] bg-[#021416] border border-[#04343b] rounded-2xl p-4 
                flex items-center justify-center overflow-hidden"
@@ -36,13 +39,14 @@ export function ScanUI({
               />
             ) : (
               <img
+              // Show preview of selected image
                 src={preview}
                 alt="preview"
                 className="w-full h-full object-contain rounded"
               />
             )}
           </div>
-
+          {/* Scan + Reset Buttons */}
           <div className="mt-4 flex gap-3">
             <button
               onClick={processImage}
@@ -59,11 +63,12 @@ export function ScanUI({
               Reset
             </button>
           </div>
-
+           {/* Error if user submits without uploading an image */}
           {inputError && <div className="mt-3 text-red-400">{inputError}</div>}
         </div>
-
+         {/* RIGHT SIDE — Results, Tags, OCR Output */}
         <div className="col-span-1 lg:col-span-2 space-y-4">
+          {/* Tag Input Field */}
           <p className="text-sm text-[#8be7c7] mb-1">
             Add tags to organize and save scan to history.(Example: work, receipt, personal)
           </p>
@@ -75,19 +80,22 @@ export function ScanUI({
             onChange={(e) => onTagChange(e.target.value)}
             className="w-full p-2 rounded-2xl bg-[#021416] border border-[#054148] text-[#bfffe8]"
           />
-
+ 
+          {/* Placeholder before results or errors appear */}
           {!result && !ocrError && (
             <div className="bg-[#021416] p-6 rounded-2xl border border-[#03303a]">
               <p className="text-[#89e6c7]">Results will appear here…</p>
             </div>
           )}
-
+           
+           {/* OCR Error Display */}
           {ocrError && (
             <div className="bg-[#230000] p-6 rounded-2xl border border-red-800">
               <p className="text-red-400">{ocrError}</p>
             </div>
           )}
 
+          {/* OCR Results Section */}
           {result && (
             <div className="space-y-4">
               <OCRResultCard

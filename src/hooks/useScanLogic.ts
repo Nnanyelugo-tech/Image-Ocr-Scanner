@@ -3,6 +3,7 @@ import { useExtract } from "./useExtract";
 import { useHistoryStore } from "../store/useHistoryStore";
 import type { OCRResult } from "../types/ocr";
 
+// Load OCR API key from .env
 const OCR_API_KEY = import.meta.env.VITE_OCR_API_KEY as string | undefined;
 
 export function useScanLogic() {
@@ -17,7 +18,7 @@ export function useScanLogic() {
   const { extract } = useExtract();
   const addHistory = useHistoryStore((s) => s.addHistory);
 
-  // Handles image selection: stores the file, clears previous errors & sets up a preview for display
+    // Handle image selection: reset errors, store the file, and create preview URL
   function handleImageSelected(f: File) {
     setInputError(null);
     setOcrError(null);
@@ -25,10 +26,12 @@ export function useScanLogic() {
     setFile(f);
     setResult(null);
 
+     // Create preview URL
     const url = URL.createObjectURL(f);
     setPreview(url);
   }
 
+  // Main OCR process: validates, converts to Base64, sends to OCR API, extracts & saves result
   async function processImage() {
     setInputError(null);
     setOcrError(null);
@@ -50,7 +53,7 @@ export function useScanLogic() {
     setLoading(true);
 
     try {
-      // Converts the selected image to Base64 
+       // Convert selected image file to Base64 using FileReader
       const base64 = await new Promise<string>((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = () => resolve(reader.result as string);
@@ -76,13 +79,14 @@ export function useScanLogic() {
         setOcrError(json.ErrorMessage || "OCR failed.");
         return;
       }
-
+       // Extract recognized text
       const extractedText = json.ParsedResults?.[0]?.ParsedText || "";
 
       if (!extractedText.trim()) {
         setOcrError("No text detected.");
         return;
       }
+      // Extract phones, emails, and URLs from text
       const raw = extract(extractedText);
 
       const normalized: OCRResult = {
@@ -102,7 +106,7 @@ export function useScanLogic() {
         return;
       }
 
-      // Saves the parsed OCR results to state and adds them to history with date and user-defined tags
+      // Save OCR result to state and history store with tags + timestamp
       setResult(normalized);
       addHistory({
         ...normalized,
@@ -120,6 +124,7 @@ export function useScanLogic() {
     setLoading(false);
   }
 
+  // Reset the entire scanner to initial state
   function resetAll() {
     if (preview) URL.revokeObjectURL(preview);
 
@@ -132,6 +137,7 @@ export function useScanLogic() {
     setLoading(false);
   }
 
+  // Return everything needed by the UI components
   return {
     file,
     preview,

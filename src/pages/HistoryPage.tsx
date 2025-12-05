@@ -3,6 +3,7 @@ import { useHistoryLogic } from "../hooks/useHistoryLogic";
 import { HistoryUI } from "../components/HistoryUI";
 
 export default function HistoryPage() {
+  // Initialize all history logic (state + functions)
   const logic = useHistoryLogic();
 
   return (

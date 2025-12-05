@@ -2,6 +2,7 @@ import { useScanLogic } from "../../hooks/useScanLogic";
 import { ScanUI } from "../../components/ScanUI";
 
 export default function ScanPage() {
+  // Initialize the entire scanning logic (state + functions)
   const logic = useScanLogic();
 
   return (

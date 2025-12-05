@@ -2,11 +2,12 @@ import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
 export default function NavBar() {
+  // Tracks mobile menu open/close state
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      {/* NAVIGATION BAR */}
+       {/* NAVIGATION BAR WRAPPER */}
       <header className="bg-linear-to-r from-[#02121a] via-[#051827] to-[#02121a] border-b border-[#063047]">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* LOGO */}
@@ -24,7 +25,7 @@ export default function NavBar() {
             </h1>
           </div>
 
-          {/* HAMBURGER BUTTON */}
+          {/* MOBILE HAMBURGER BUTTON */}
           <button
             onClick={() => setOpen(!open)}
             className="md:hidden text-white focus:outline-none"
@@ -36,7 +37,7 @@ export default function NavBar() {
             </div>
           </button>
 
-          {/* DESKTOP NAV */}
+          {/* DESKTOP NAVIGATION LINKS */}
           <nav className="hidden md:flex gap-6">
             <NavLink
               to="/"
@@ -73,7 +74,7 @@ export default function NavBar() {
           </nav>
         </div>
 
-        {/* MOBILE DROPDOWN */}
+         {/* MOBILE DROPDOWN MENU */}
         {open && (
           <nav className="md:hidden bg-[#02161f] border-t border-[#063047] flex flex-col px-6 py-3 gap-3">
             <NavLink
@@ -115,12 +116,12 @@ export default function NavBar() {
         )}
       </header>
 
-      {/* PAGE CONTENT */}
+      {/* PAGE CONTENT RENDERED BY ROUTER */}
       <main className="grow max-w-5xl mx-auto w-full px-6 py-6">
         <Outlet />
       </main>
 
-      {/* FOOTER */}
+      {/* FOOTER SECTION */}
       <footer className="w-full text-center py-4 mt-8 border-t border-gray-700">
         <p className="text-sm text-gray-400">
           &copy; {new Date().getFullYear()} OCR Scanner App — Built by Ugonna

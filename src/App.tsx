@@ -7,8 +7,11 @@ import AboutPage from "./pages/AboutPage";
 
 export default function App() {
   return (
+    // Wraps the entire app with React Router so navigation works
     <BrowserRouter>
+    {/* Base layout: full screen height, column layout, dark background */}
       <div className="min-h-screen flex flex-col bg-[#071019] text-white">
+          {/* Defines all the app routes */}
         <Routes>
           {/* Layout Route */}
           <Route path="/" element={<NavBar />}>

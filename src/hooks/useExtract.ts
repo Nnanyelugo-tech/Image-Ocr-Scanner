@@ -1,4 +1,5 @@
 export function useExtract() {
+  // Function to extract phones, emails, and URLs from OCR text
   const extract = (text: string) => {
     const phones = text.match(/\+?\d[\d\s\-()]{6,}\d/g) || [];
     const emails =
@@ -6,6 +7,7 @@ export function useExtract() {
     const urls = text.match(/https?:\/\/[^\s)]+/g) || [];
 
     const unique = (arr: string[]) =>
+      // Remove duplicates + extra spaces
       Array.from(new Set(arr.map((s) => s.trim())));
 
     return {
@@ -14,6 +16,6 @@ export function useExtract() {
       urls: unique(urls),
     };
   };
-
+  // Expose 'extract' function to other components
   return { extract };
 }
