@@ -31,7 +31,8 @@ export function useScanLogic() {
     setPreview(url);
   }
 
-  // Main OCR process: validates, converts to Base64, sends to OCR API, extracts & saves result
+  // Main OCR process: validates, converts to Base64, 
+  // sends to OCR API, extracts & saves result
   async function processImage() {
     setInputError(null);
     setOcrError(null);
@@ -61,8 +62,10 @@ export function useScanLogic() {
         reader.readAsDataURL(file);
       });
 
-      // Prepares the image data and API key sends it to the OCR API and gets the parsed JSON result
+      // Prepares the image data and API key sends it to the OCR API 
+      // and gets the parsed JSON result
       const form = new FormData();
+      // Sends your API key to the OCR service for authentication.
       form.append("apikey", OCR_API_KEY);
       form.append("base64Image", base64);
       form.append("language", "eng");
@@ -74,7 +77,8 @@ export function useScanLogic() {
 
       const json = await resp.json();
 
-      // Checks OCR API response for errors, extracts text, and parses it into phones, emails, and URLs
+      // Checks OCR API response for errors, extracts text, 
+      // and parses it into phones, emails, and URLs
       if (json.IsErroredOnProcessing) {
         setOcrError(json.ErrorMessage || "OCR failed.");
         return;

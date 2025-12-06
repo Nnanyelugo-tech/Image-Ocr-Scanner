@@ -1,3 +1,5 @@
+// This component displays OCR results (phones, emails, URLs), lets you copy them, 
+// and save them to a vCard. It shows a temporary toast message when actions happen.
 import { useState } from "react";
 import { createVCard, downloadVCard } from "../utils/vcard";
 import type { OCRResultCardProps } from "../types/ocrResultCard";
@@ -20,6 +22,7 @@ export function OCRResultCard({ title, items, type }: OCRResultCardProps) {
   const urls = type === "url" ? items : [];
 
   const copyAll = async () => {
+    // Copy all items from the array into the clipboard as multi-line text
     await navigator.clipboard.writeText(items.join("\n"));
     showToast("Copied!");
   };

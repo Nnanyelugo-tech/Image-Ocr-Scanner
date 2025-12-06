@@ -9,7 +9,7 @@ export default function NavBar() {
     <>
        {/* NAVIGATION BAR WRAPPER */}
       <header className="bg-linear-to-r from-[#02121a] via-[#051827] to-[#02121a] border-b border-[#063047]">
-        <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-full mx-auto px-6 py-4 flex items-center justify-between">
           {/* LOGO */}
           <div className="flex items-center gap-3">
             <div
