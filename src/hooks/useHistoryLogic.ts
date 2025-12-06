@@ -9,6 +9,7 @@ export function useHistoryLogic() {
   const clearHistory = useHistoryStore((s) => s.clearHistory);
   // Remove a single history entry
   const removeHistoryItem = useHistoryStore((s) => s.removeHistoryItem);
+  
 
   // Text used to filter by tag
   const [tagQuery, setTagQuery] = useState("");

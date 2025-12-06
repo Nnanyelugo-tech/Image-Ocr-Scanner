@@ -79,7 +79,7 @@ export default function NavBar() {
           <nav className="md:hidden bg-[#02161f] border-t border-[#063047] flex flex-col px-6 py-3 gap-3">
             <NavLink
               to="/"
-              onClick={() => setOpen(true)}
+              onClick={() => setOpen(false)}
               className={({ isActive }) =>
                 `px-3 py-2 rounded ${
                   isActive ? "bg-[#033543]" : "hover:bg-[#022f39]"
@@ -91,7 +91,7 @@ export default function NavBar() {
 
             <NavLink
               to="/history"
-              onClick={() => setOpen(true)}
+              onClick={() => setOpen(false)}
               className={({ isActive }) =>
                 `px-3 py-2 rounded ${
                   isActive ? "bg-[#033543]" : "hover:bg-[#022f39]"
@@ -103,7 +103,7 @@ export default function NavBar() {
 
             <NavLink
               to="/about"
-              onClick={() => setOpen(true)}
+              onClick={() => setOpen(false)}
               className={({ isActive }) =>
                 `px-3 py-2 rounded ${
                   isActive ? "bg-[#033543]" : "hover:bg-[#022f39]"

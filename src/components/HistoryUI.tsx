@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import type { HistoryUIProps } from "../types/historyUI";
 
 export function HistoryUI({
@@ -11,6 +12,8 @@ export function HistoryUI({
   removeHistoryItem,
   clearHistory,
 }: HistoryUIProps) {
+  const [showConfirm, setShowConfirm] = useState(false);
+
   return (
     <main className="max-w-5xl mx-auto p-6 relative">
       {/* Page header with title + navigation */}
@@ -33,7 +36,7 @@ export function HistoryUI({
           {history.length > 0 && (
             <button
               className="px-2 py-2 bg-red-600 rounded text-center w-full sm:w-auto"
-              onClick={() => clearHistory()}
+              onClick={() => setShowConfirm(true)}
             >
               Clear History
             </button>
@@ -146,6 +149,38 @@ export function HistoryUI({
           );
         })}
       </section>
+      {showConfirm && (
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+          <div className="bg-[#081b21] p-6 rounded-xl border border-[#054148] w-80 text-center">
+            <h3 className="text-lg font-semibold text-[#aef9da] mb-3">
+              Clear All History?
+            </h3>
+            <p className="text-sm text-[#8be7c7] mb-5">
+              This action cannot be undone. Are you sure you want to delete all
+              scan history permanently?
+            </p>
+
+            <div className="flex justify-between">
+              <button
+                className="px-4 py-2 bg-red-600 text-white rounded"
+                onClick={() => {
+                  clearHistory();
+                  setShowConfirm(false);
+                }}
+              >
+                Yes, Clear
+              </button>
+
+              <button
+                className="px-4 py-2 bg-[#033543] text-[#aef9da] rounded"
+                onClick={() => setShowConfirm(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
