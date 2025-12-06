@@ -4,10 +4,21 @@ import { NavLink, Outlet } from "react-router-dom";
 export default function NavBar() {
   // Tracks mobile menu open/close state
   const [open, setOpen] = useState(false);
+  const [animate, setAnimate] = useState(false);
+
+  const toggleMenu = () => {
+    if (open) {
+      setAnimate(false);
+      setTimeout(() => setOpen(false), 300);
+    } else {
+      setOpen(true);
+      setTimeout(() => setAnimate(true), 10); 
+    }
+  };
 
   return (
     <>
-       {/* NAVIGATION BAR WRAPPER */}
+      {/* NAVIGATION BAR WRAPPER */}
       <header className="bg-linear-to-r from-[#02121a] via-[#051827] to-[#02121a] border-b border-[#063047]">
         <div className="max-w-full mx-auto px-6 py-4 flex items-center justify-between">
           {/* LOGO */}
@@ -27,7 +38,7 @@ export default function NavBar() {
 
           {/* MOBILE HAMBURGER BUTTON */}
           <button
-            onClick={() => setOpen(!open)}
+            onClick={toggleMenu}
             className="md:hidden text-white focus:outline-none"
           >
             <div className="space-y-1">
@@ -74,12 +85,18 @@ export default function NavBar() {
           </nav>
         </div>
 
-         {/* MOBILE DROPDOWN MENU */}
+        {/* MOBILE DROPDOWN MENU */}
         {open && (
-          <nav className="md:hidden bg-[#02161f] border-t border-[#063047] flex flex-col px-6 py-3 gap-3">
+          <nav
+            className={`
+      md:hidden bg-[#02161f] border-t border-[#063047] flex flex-col gap-3 px-6 overflow-hidden
+      transition-[max-height] duration-350 ease-in-out
+      ${animate ? "max-h-96 py-3" : "max-h-0 py-0"}
+    `}
+          >
             <NavLink
               to="/"
-              onClick={() => setOpen(false)}
+              onClick={toggleMenu}
               className={({ isActive }) =>
                 `px-3 py-2 rounded ${
                   isActive ? "bg-[#033543]" : "hover:bg-[#022f39]"
@@ -91,7 +108,7 @@ export default function NavBar() {
 
             <NavLink
               to="/history"
-              onClick={() => setOpen(false)}
+              onClick={toggleMenu}
               className={({ isActive }) =>
                 `px-3 py-2 rounded ${
                   isActive ? "bg-[#033543]" : "hover:bg-[#022f39]"
@@ -103,7 +120,7 @@ export default function NavBar() {
 
             <NavLink
               to="/about"
-              onClick={() => setOpen(false)}
+              onClick={toggleMenu}
               className={({ isActive }) =>
                 `px-3 py-2 rounded ${
                   isActive ? "bg-[#033543]" : "hover:bg-[#022f39]"
