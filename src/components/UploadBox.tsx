@@ -69,7 +69,6 @@ export function UploadBox({ onImageSelected, helper }: UploadBoxProps) {
         <input
           type="file"
           accept="image/*;capture=camera"
-          capture="environment"
           onChange={handleChange}
           className="hidden"
         />
