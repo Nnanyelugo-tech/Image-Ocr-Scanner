@@ -25,17 +25,27 @@ export function HistoryUI({
           </p>
         </div>
         {/* Back button + clear history if available */}
-        <div className="flex flex-col sm:flex-row sm:space-x-3 space-y-3 sm:space-y-0 text-sm sm:text-base">
+        <div className="flex flex-col sm:flex-row sm:space-x-3 space-y-3 sm:space-y-0">
           <Link
             to="/"
-            className="px-3 py-2 bg-[#033543] rounded text-center w-full sm:w-auto"
+            className="
+      px-0 py-1.5 text-xs
+      sm:px-2 sm:py-2 sm:text-sm
+      bg-[#033543] rounded text-center
+      w-full sm:w-auto
+    "
           >
             Back to Scan
           </Link>
 
           {history.length > 0 && (
             <button
-              className="px-2 py-2 bg-red-600 rounded text-center w-full sm:w-auto"
+              className="
+        px-0 py-1.5 text-xs
+        sm:px-2 sm:py-2 sm:text-sm
+        bg-red-500 rounded text-center
+        w-full sm:w-auto
+      "
               onClick={() => setShowConfirm(true)}
             >
               Clear History
@@ -89,14 +99,14 @@ export function HistoryUI({
                   {/* Copy card button */}
                   <button
                     onClick={() => copyCard(item, idx)}
-                    className="text-xs px-3 py-1 bg-[#0b6e4f] text-white rounded"
+                    className="text-xs px-3 py-1 bg-[#033543] text-white rounded"
                   >
                     Copy
                   </button>
                   {/* Remove this specific card */}
                   <button
                     onClick={() => removeHistoryItem(realIndex)}
-                    className="text-xs px-3 py-1 bg-red-600 text-white rounded"
+                    className="text-xs px-3 py-1 bg-red-500 text-white rounded"
                   >
                     Remove
                   </button>
@@ -162,13 +172,13 @@ export function HistoryUI({
 
             <div className="flex justify-between">
               <button
-                className="px-4 py-2 bg-red-600 text-white rounded"
+                className="px-2 py-2 bg-red-500 text-white rounded"
                 onClick={() => {
                   clearHistory();
                   setShowConfirm(false);
                 }}
               >
-                Yes, Clear
+                Yes Clear
               </button>
 
               <button
