@@ -3,6 +3,8 @@ import type { HistoryItem } from "../store/useHistoryStore";
 export interface HistoryUIProps {
   history: HistoryItem[];
   filteredHistory: HistoryItem[];
+  showConfirm: boolean;
+  setShowConfirm: (value: boolean) => void;
   tagQuery: string;
   setTagQuery: (value: string) => void;
   copiedIndex: number | null;

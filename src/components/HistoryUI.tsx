@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import type { HistoryUIProps } from "../types/historyUI";
 
 export function HistoryUI({
@@ -11,9 +10,9 @@ export function HistoryUI({
   copyCard,
   removeHistoryItem,
   clearHistory,
+  showConfirm,
+  setShowConfirm,
 }: HistoryUIProps) {
-  const [showConfirm, setShowConfirm] = useState(false);
-
   return (
     <main className="max-w-5xl mx-auto p-6 relative">
       {/* Page header with title + navigation */}

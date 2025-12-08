@@ -15,6 +15,7 @@ export function useHistoryLogic() {
   const [tagQuery, setTagQuery] = useState("");
   // Tracks which card is currently copied
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   // Copy full card data to clipboard and show toast
   const copyCard = (item: HistoryItem, index: number) => {
@@ -46,5 +47,7 @@ Tags: ${item.tags?.length ? item.tags.join(", ") : "None"}
     copyCard,
     removeHistoryItem,
     clearHistory,
+    showConfirm,
+    setShowConfirm,
   };
 }

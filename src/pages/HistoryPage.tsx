@@ -16,6 +16,8 @@ export default function HistoryPage() {
       copyCard={logic.copyCard}
       removeHistoryItem={logic.removeHistoryItem}
       clearHistory={logic.clearHistory}
+      showConfirm={logic.showConfirm}
+      setShowConfirm={logic.setShowConfirm}
     />
   );
 }
