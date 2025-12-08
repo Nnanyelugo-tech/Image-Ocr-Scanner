@@ -26,7 +26,7 @@ export const useHistoryStore = create<HistoryState>()(
       addHistory: (item) =>
         set((state) => ({
           // Add new item to history, ensuring tags is always an array
-          history: [...state.history, { ...item, tags: item.tags ?? [] }],
+          history: [{ ...item, tags: item.tags ?? [] }, ...state.history],
         })),
 
       clearHistory: () =>
