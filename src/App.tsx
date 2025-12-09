@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScanPage from "./pages/ScanPage/ScanPage";
 import HistoryPage from "./pages/HistoryPage";
-import NavBar from "./components/NavBar";
+import NavBar from "./pages/Layout";
 import AboutPage from "./pages/AboutPage";
 
 
