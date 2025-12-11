@@ -41,8 +41,8 @@ export function HistoryUI({
             <button
               className="
         px-0 py-1.5 text-xs
-        sm:px-2 sm:py-2 sm:text-sm
-        bg-red-500 rounded text-center
+        sm:px-2 sm:py-2 sm:text-sm 
+       bg-linear-to-r from-[#8B0000] to-[#B30000] rounded text-center
         w-full sm:w-auto
       "
               onClick={() => setShowConfirm(true)}
@@ -105,7 +105,7 @@ export function HistoryUI({
                   {/* Remove this specific card */}
                   <button
                     onClick={() => removeHistoryItem(realIndex)}
-                    className="text-xs px-3 py-1 bg-red-500 text-white rounded"
+                    className="text-xs px-3 py-1 bg-linear-to-r from-[#8B0000] to-[#B30000]  text-white rounded"
                   >
                     Remove
                   </button>

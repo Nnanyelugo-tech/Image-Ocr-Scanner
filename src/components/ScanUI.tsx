@@ -58,7 +58,9 @@ export function ScanUI({
 
             <button
               onClick={resetAll}
-              className="flex-1 bg-red-500 text-[#aef9da] px-4 py-2 rounded hover:bg-red-600 transition-colors"
+              className="flex-1 px-5 py-3 rounded-lg text-white font-semibold
+             bg-linear-to-r from-[#8B0000] to-[#B30000]
+             shadow-md hover:shadow-xl hover:scale-[1.03] transition-all"
             >
               Reset
             </button>

@@ -44,7 +44,7 @@ export function OCRResultCard({ title, items, type }: OCRResultCardProps) {
       )}
 
       <h3 className="text-lg font-semibold mb-3 text-[#bfffe8]">{title}</h3>
-     {/* List of OCR extracted items */}
+      {/* List of OCR extracted items */}
       <ul className="space-y-2 mb-3">
         {items.map((value, i) => (
           <li
@@ -55,7 +55,8 @@ export function OCRResultCard({ title, items, type }: OCRResultCardProps) {
             {/* Copy individual item */}
             <button
               className="opacity-0 group-hover:opacity-100 transition absolute right-2 top-1/2 -translate-y-1/2 
-                   bg-[#00ffc3] text-black text-[10px] px-2 py-1 rounded"
+             bg-linear-to-br from-[#00FFC3] to-[#00D4FF] text-black text-[10px] px-2 py-1 rounded 
+             shadow-sm hover:shadow-md"
               onClick={async () => {
                 // Copy single item
                 await navigator.clipboard.writeText(value);
@@ -71,18 +72,22 @@ export function OCRResultCard({ title, items, type }: OCRResultCardProps) {
       <div className="flex gap-3 justify-end">
         {/* Action buttons */}
         <button
-          className="flex text-xs px-3 py-2 bg-[#00ffc3] rounded text-black"
+          className="flex text-xs px-3 py-2 rounded text-black 
+               bg-linear-to-r from-[#00FFC3] to-[#00D4FF] 
+               shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all"
           onClick={copyAll}
         >
           Copy
         </button>
 
         <button
-          className="flex text-xs px-3 py-2 bg-[#00a6ff] rounded text-black"
+          className="flex text-xs px-3 py-2 rounded text-white 
+               bg-linear-to-r from-[#0091FF] to-[#00C6FF] 
+               shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all"
           // Save items to a vCard file
           onClick={saveAll}
         >
-          Save
+          Download
         </button>
       </div>
     </div>
